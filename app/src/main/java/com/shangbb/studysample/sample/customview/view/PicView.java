@@ -1,4 +1,4 @@
-package com.shangbb.studysample.view;
+package com.shangbb.studysample.sample.customview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,7 +7,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.shangbb.studysample.entity.PieData;
+import com.shangbb.studysample.sample.customview.entity.PieData;
 
 import java.util.ArrayList;
 
@@ -19,15 +19,17 @@ import java.util.ArrayList;
  */
 public class PicView extends View {
 
+
+
     //颜色表
-    private int[] mColors = {0xFFCCFF00, 0xFF6495ED, 0xFFE32636, 0xFF800000, 0xFF808000,
-            0xFFFF8C69, 0xFF808080,
-            0xFFE6B800, 0xFF7CFC00};
+    private int[] mColors = {0xFFFF0000, 0xFFFF7F00, 0xFFFFFF00, 0xFF00FF00, 0xFF007FFF,
+            0xFF0000FF, 0xFF7F00FF};
 
     private float mStartAngle = 0; //初始绘制角度
     private ArrayList<PieData> mData;
     private int mWidth, mHeight;
     private Paint mPaint = new Paint();
+    private RectF rectF;
 
     public PicView(Context context) {
         super(context);
@@ -35,12 +37,13 @@ public class PicView extends View {
 
     public PicView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setAntiAlias(true);
     }
 
     public PicView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setAntiAlias(true);
+
     }
 
     @Override
@@ -48,6 +51,9 @@ public class PicView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
+        float r = (float) (Math.min(mWidth, mHeight) / 2 * 0.8); //计算半径
+        //饼状图绘制区域
+        rectF = new RectF(-r, -r, r, r);
     }
 
     @Override
@@ -60,10 +66,7 @@ public class PicView extends View {
 
         float currentStartAngle = mStartAngle; //当前起始角度
         canvas.translate(mWidth / 2, mHeight / 2);  //移动画布坐标原点
-        float r = (float) (Math.min(mWidth, mHeight) / 2 * 0.8); //计算半径
 
-        //饼状图绘制区域
-        RectF rectF = new RectF(-r, -r, r, r);
 
         for (int i = 0; i < mData.size(); i++) {
             PieData pie = mData.get(i);

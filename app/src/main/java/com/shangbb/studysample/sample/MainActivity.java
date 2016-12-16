@@ -1,4 +1,4 @@
-package com.shangbb.studysample.activity;
+package com.shangbb.studysample.sample;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,10 +7,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.shangbb.studysample.R;
+import com.shangbb.studysample.sample.customview.CustomViewActivity;
+import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.entity.ActivityBean;
+import com.shangbb.studysample.sample.customview.entity.ActivityBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity {
 
     private void setData() {
         mList.add(new ActivityBean("CustomView", CustomViewActivity.class));
+        mList.add(new ActivityBean("RecyclerView", RecylerViewActivity.class));
         mAdapter.notifyDataSetChanged();
     }
 

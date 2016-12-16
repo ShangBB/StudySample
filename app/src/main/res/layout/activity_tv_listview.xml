@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shangbb.studysample.activity.MainActivity">
+    tools:context="com.shangbb.studysample.sample.MainActivity">
 
     <include layout="@layout/toolbar"/>
 

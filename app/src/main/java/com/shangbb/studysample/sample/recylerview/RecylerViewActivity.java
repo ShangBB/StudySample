@@ -1,4 +1,4 @@
-package com.shangbb.studysample.activity;
+package com.shangbb.studysample.sample.recylerview;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,12 +10,17 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.entity.ActivityBean;
+import com.shangbb.studysample.sample.customview.entity.ActivityBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomViewActivity extends BaseActivity {
+/**
+ * @Fuction:
+ * @Author: Shang
+ * @Date: 2016/12/15  9:51
+ */
+public class RecylerViewActivity extends BaseActivity{
 
     private ListView mListView;
     private BaseAdapterHelper<ActivityBean> mAdapter;
@@ -30,7 +35,7 @@ public class CustomViewActivity extends BaseActivity {
     @Override
     protected void initToolBar() {
         super.initToolBar();
-        toolbar.setTitle("CustomView");
+        toolbar.setTitle("RecylerView");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
@@ -58,8 +63,13 @@ public class CustomViewActivity extends BaseActivity {
     }
 
     private void setData() {
-        mList.add(new ActivityBean("CanvasDemo", CanvasDemoActivity.class));
+        mList.add(new ActivityBean("简单用法", Demo1Activity.class));
+        mList.add(new ActivityBean("多type holder", Demo2Activity.class));
+        mList.add(new ActivityBean("默认动画", Demo3Activity1.class));
+        mList.add(new ActivityBean("自定义动画", Demo3Activity2.class));
+        mList.add(new ActivityBean("自定义divider", Demo4Activity.class));
+        mList.add(new ActivityBean("宽度全屏的item  点击事件", Demo5Activity.class));
+        mList.add(new ActivityBean("DiffUtil 计算差异刷新", DiffActivity.class));
         mAdapter.notifyDataSetChanged();
     }
-
 }
