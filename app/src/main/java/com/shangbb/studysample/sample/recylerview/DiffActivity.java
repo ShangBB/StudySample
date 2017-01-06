@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,10 +15,13 @@ import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.sample.recylerview.data.TestBean;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG;
+
 /**
- * @Fuction:
+ * @Fuction: 数据对比，局部更新, item拖动
  * @Author: Shang
  * @Date: 2016/12/16  16:06
  */
@@ -43,6 +47,8 @@ public class DiffActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new DiffAdapter(this, mDatas);
         mRecyclerView.setAdapter(mAdapter);
+
+        mTouchHelper.attachToRecyclerView(mRecyclerView);
 
         Button mButton = (Button) findViewById(R.id.btn);
         mButton.setVisibility(View.VISIBLE);
@@ -73,7 +79,9 @@ public class DiffActivity extends BaseActivity {
             for (TestBean bean : mDatas) {
                 mNewDatas.add(bean.clone());//clone一遍旧数据 ，模拟刷新操作
             }
-            mNewDatas.add(new TestBean("赵子龙", "帅", mNewDatas.get(3).getPic()));//模拟新增数据
+            if (mNewDatas.size() > 3){
+                mNewDatas.add(new TestBean("赵子龙", "帅", mNewDatas.get(3).getPic()));//模拟新增数据
+            }
             mNewDatas.get(0).setDesc("小白脸");
             mNewDatas.get(0).setPic(mNewDatas.get(1).getPic());//模拟修改数据
             TestBean testBean = mNewDatas.get(1);//模拟数据位移
@@ -141,4 +149,59 @@ public class DiffActivity extends BaseActivity {
             }
         }
     };
+
+    /**
+     * ItemTouchHelper 是用于实现 RecyclerView Item 拖曳效果的类
+     */
+    ItemTouchHelper mTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
+        @Override
+        public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+
+            /**
+             * actionState : action状态类型，有三类
+             * ACTION_STATE_DRAG （拖曳）
+             * ACTION_STATE_SWIPE（滑动）
+             * ACTION_STATE_IDLE（静止）
+             */
+            //支持上下左右拖拽
+            int dragFlags = makeFlag(ACTION_STATE_DRAG,
+                    ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+
+            //支持左右滑动
+            int swipeFlags = makeFlag(ItemTouchHelper.ACTION_STATE_SWIPE,
+                    ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+
+            return makeMovementFlags(dragFlags, swipeFlags); //返回0表示不支持拖拽和滑动
+        }
+
+        /**
+         * @param recyclerView attach 的 RecyclerView
+         * @param viewHolder  拖动的item
+         * @param target    放置item的目标位置
+         *
+         * @return
+         */
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                              RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition(); // 要拖拽的位置
+            int toPosition = target.getAdapterPosition(); //要放置目标的位置
+            Collections.swap(mDatas, fromPosition,toPosition); //做数据的交换
+            mAdapter.notifyItemMoved(fromPosition, toPosition);
+            return true;
+        }
+
+        /**
+         * @param viewHolder 滑动移除的item
+         * @param direction
+         */
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition(); //获取要滑动删除的item位置
+            mDatas.remove(position);
+            mAdapter.notifyItemRemoved(position);
+
+        }
+    });
 }

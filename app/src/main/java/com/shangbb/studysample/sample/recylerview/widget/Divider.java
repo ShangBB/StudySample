@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+/**
+ * Divider 封装
+ */
 public class Divider extends RecyclerView.ItemDecoration {
 
     private Drawable mDivider;
