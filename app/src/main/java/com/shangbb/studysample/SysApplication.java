@@ -1,12 +1,8 @@
 package com.shangbb.studysample;
 
-import android.app.Activity;
 import android.app.Application;
 
 import com.shangbb.studysample.utils.CrashExceptionHandler;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @Fuction:
@@ -16,7 +12,6 @@ import java.util.List;
 public class SysApplication extends Application {
 
     private static SysApplication instance;
-    private List<Activity> mList = new LinkedList<Activity>();
 
     public static SysApplication getInstance() {
         return instance;
@@ -28,23 +23,6 @@ public class SysApplication extends Application {
         instance = this;
         configCollectCrashInfo();
 
-    }
-
-    // add Activity
-    public void addActivity(Activity activity) {
-        mList.add(activity);
-    }
-
-    // remove Activity
-    public void removeActivity(Activity activity) {
-        mList.remove(activity);
-    }
-
-    public void exitApp() {
-        for (Activity activity : mList) {
-            if (activity != null)
-                activity.finish();
-        }
     }
 
 
