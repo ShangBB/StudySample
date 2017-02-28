@@ -58,7 +58,9 @@ public class CustomViewActivity extends BaseActivity {
     }
 
     private void setData() {
-        mList.add(new ActivityBean("CanvasDemo", CanvasDemoActivity.class));
+        mList.add(new ActivityBean("PicView", PicViewActivity.class));
+        mList.add(new ActivityBean("CheckView", CheckViewActivity.class));
+        mList.add(new ActivityBean("LeafLoadingView", LeafloadingViewActivity.class));
         mAdapter.notifyDataSetChanged();
     }
 

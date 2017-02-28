@@ -121,7 +121,7 @@ public class BaseActivity extends AppCompatActivity
 
 
 
-    /*********************************权限适配*********************************/
+    /*********************************权限适配23up*********************************/
 
     private static PermissionListener mPermissionListener;
 

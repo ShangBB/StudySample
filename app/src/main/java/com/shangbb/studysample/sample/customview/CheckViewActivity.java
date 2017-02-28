@@ -5,23 +5,20 @@ import android.os.Bundle;
 
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
-import com.shangbb.studysample.sample.customview.entity.PieData;
-import com.shangbb.studysample.sample.customview.view.PicView;
+import com.shangbb.studysample.sample.customview.view.CheckView;
 
-import java.util.ArrayList;
-
-public class CanvasDemoActivity extends BaseActivity {
+public class CheckViewActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_canvas_demo);
+        setContentView(R.layout.activity_checkview);
     }
 
     @Override
     protected void initToolBar() {
         super.initToolBar();
-        toolbar.setTitle("CanvasDemo");
+        toolbar.setTitle("CheckView");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
@@ -31,12 +28,10 @@ public class CanvasDemoActivity extends BaseActivity {
     protected void initViews() {
         super.initViews();
 
-        PicView picView = (PicView) findViewById(R.id.picview);
-        ArrayList<PieData> picViews = new ArrayList<>();
-        for (int i = 0; i < 7; i++){
-            picViews.add(new PieData("测试"+i, 10));
-        }
-        picView.setData(picViews);
+        CheckView checkView = (CheckView) findViewById(R.id.checkview);
+        checkView.setAnimDuration(1500);
+        checkView.check();
 
     }
+
 }
