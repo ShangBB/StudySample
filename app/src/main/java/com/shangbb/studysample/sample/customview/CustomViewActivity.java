@@ -61,6 +61,7 @@ public class CustomViewActivity extends BaseActivity {
         mList.add(new ActivityBean("PicView", PicViewActivity.class));
         mList.add(new ActivityBean("CheckView", CheckViewActivity.class));
         mList.add(new ActivityBean("LeafLoadingView", LeafloadingViewActivity.class));
+        mList.add(new ActivityBean("KeyboardView", KeyboardActicity.class));
         mAdapter.notifyDataSetChanged();
     }
 

@@ -22,7 +22,6 @@ public class SysApplication extends Application {
         super.onCreate();
         instance = this;
         configCollectCrashInfo();
-
     }
 
 

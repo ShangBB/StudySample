@@ -26,6 +26,7 @@
         <activity android:name=".sample.customview.PicViewActivity"/>
         <activity android:name=".sample.customview.CheckViewActivity"/>
         <activity android:name=".sample.customview.LeafloadingViewActivity"/>
+        <activity android:name=".sample.customview.KeyboardActicity"/>
 
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>
         <activity android:name=".sample.recylerview.Demo1Activity"/>
