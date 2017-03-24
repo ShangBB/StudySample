@@ -1,11 +1,12 @@
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextUtil {
+public class TextUtils {
 
     public static boolean isPhone(String content) {
         if (content == null) {
@@ -93,5 +94,14 @@ public class TextUtil {
         m.appendTail(b);
         return b.toString();
     }
+
+    /**
+     * 随机生成32位字符串
+     * @return
+     */
+    public static String getUuidName() {
+        return UUID.randomUUID().toString().trim().replace("-", "");
+    }
+
 
 }

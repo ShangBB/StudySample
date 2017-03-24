@@ -1,14 +1,14 @@
-package com.shangbb.studysample.constans;
+package com.shangbb.studysample.consts;
 
 /**
  * 
- * @ClassName: Sp
+ * @ClassName: SpConsts
  * @Description: SharedPreferences 存储时需要用到的常量 及 key值
  * @author ShangBB
  * @date 2015-11-10 上午11:50:15
  * 
  */
-public class Sp {
+public class SpConsts {
 
     /**
      * 保存初始化数据状态

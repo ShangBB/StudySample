@@ -1,4 +1,4 @@
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

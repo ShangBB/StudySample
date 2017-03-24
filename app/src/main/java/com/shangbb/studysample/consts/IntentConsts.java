@@ -1,12 +1,12 @@
-package com.shangbb.studysample.constans;
+package com.shangbb.studysample.consts;
 
 /**
  * @author ShangBB
- * @ClassName: It
+ * @ClassName: IntentConsts
  * @Description: Intent常量
  * @date 2015-11-19 下午5:06:02
  */
-public class It {
+public class IntentConsts {
     /**
      * 初始化数据库的 Intent action
      */

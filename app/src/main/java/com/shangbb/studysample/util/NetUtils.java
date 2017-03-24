@@ -1,4 +1,4 @@
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import android.app.Activity;
 import android.content.ComponentName;

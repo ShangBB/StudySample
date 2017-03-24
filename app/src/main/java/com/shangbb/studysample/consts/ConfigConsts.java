@@ -1,14 +1,14 @@
-package com.shangbb.studysample.constans;
+package com.shangbb.studysample.consts;
 
 /**
  * 
- * @ClassName: BaseConstans
+ * @ClassName: ConfigConsts
  * @Description: 全局常量
  * @author ShangBB
  * @date 2015-11-10 下午1:14:53
  * 
  */
-public class BaseConstans {
+public class ConfigConsts {
 
     public static final String APP_NAME = "Guide";
 

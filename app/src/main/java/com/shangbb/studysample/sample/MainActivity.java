@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.sample.customview.CustomViewActivity;
+import com.shangbb.studysample.sample.ipc.messenger.IPCMessengerActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
@@ -61,6 +62,7 @@ public class MainActivity extends BaseActivity {
     private void setData() {
         mList.add(new ActivityBean("CustomView", CustomViewActivity.class));
         mList.add(new ActivityBean("RecyclerView", RecylerViewActivity.class));
+        mList.add(new ActivityBean("IPCMessenger", IPCMessengerActivity.class));
         mAdapter.notifyDataSetChanged();
     }
 

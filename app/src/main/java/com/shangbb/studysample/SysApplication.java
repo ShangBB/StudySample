@@ -2,7 +2,7 @@ package com.shangbb.studysample;
 
 import android.app.Application;
 
-import com.shangbb.studysample.utils.CrashExceptionHandler;
+import com.shangbb.studysample.util.CrashExceptionHandler;
 
 /**
  * @Fuction:

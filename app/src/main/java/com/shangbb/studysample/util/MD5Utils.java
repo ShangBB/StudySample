@@ -1,4 +1,4 @@
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

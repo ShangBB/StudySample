@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!--customView-->
         <activity
             android:name=".sample.customview.CustomViewActivity"
             android:label="@string/title_activity_custom_view">
@@ -28,6 +30,7 @@
         <activity android:name=".sample.customview.LeafloadingViewActivity"/>
         <activity android:name=".sample.customview.KeyboardActicity"/>
 
+        <!--RecylerView-->
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>
         <activity android:name=".sample.recylerview.Demo1Activity"/>
         <activity android:name=".sample.recylerview.Demo2Activity"/>
@@ -36,6 +39,11 @@
         <activity android:name=".sample.recylerview.Demo4Activity"/>
         <activity android:name=".sample.recylerview.Demo5Activity"/>
         <activity android:name=".sample.recylerview.DiffActivity"/>
+
+        <!--IPC-->
+        <activity android:name=".sample.ipc.messenger.IPCMessengerActivity"/>
+        <service android:name=".sample.ipc.messenger.KMessengerService"
+            android:process=":bbs"/>
 
     </application>
 

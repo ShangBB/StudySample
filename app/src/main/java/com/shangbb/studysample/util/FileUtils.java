@@ -1,4 +1,4 @@
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -13,36 +13,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.UUID;
 
 public class FileUtils {
 
 
-    /**
-     * 随机生成32位字符串
-     * @return
-     */
-    public static String getUuidName(){
-        return UUID.randomUUID().toString().trim().replace("-", "");
-    }
-
-    /**
-     * 指定目录创建jpg文件，并获取uri
-     * @param strFileDir
-     * @return
-     * @throws IOException
-     */
-    public static Uri getUriByFileDir(String strFileDir) throws IOException {
-        String strFileName = getUuidName()+".jpg";
-        Uri uri = null;
-        uri = getUriByFileDirAndFileName(strFileDir, strFileName);
-        return uri;
-    }
-
     /****
      * 通过目录和文件名来创建/获取Uri
      * @param strFileDir   目录
-     * @param strFileName   文件名
+     * @param strFileName   带后缀文件名
      * @return  Uri
      * @throws IOException  IO异常
      */
@@ -65,6 +43,8 @@ public class FileUtils {
             return false;
         }
     }
+
+
 
     /**
      * 通过Uri返回File文件

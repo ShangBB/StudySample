@@ -1,5 +1,5 @@
 
-package com.shangbb.studysample.utils;
+package com.shangbb.studysample.util;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;

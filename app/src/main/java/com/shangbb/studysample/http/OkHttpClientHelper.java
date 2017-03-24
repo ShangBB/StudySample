@@ -3,8 +3,8 @@ package com.shangbb.studysample.http;
 import android.support.annotation.NonNull;
 
 import com.shangbb.studysample.SysApplication;
-import com.shangbb.studysample.utils.LogUtils;
-import com.shangbb.studysample.utils.NetUtils;
+import com.shangbb.studysample.util.LogUtils;
+import com.shangbb.studysample.util.NetUtils;
 
 import java.io.File;
 import java.io.IOException;
