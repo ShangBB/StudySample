@@ -48,6 +48,19 @@ public class TimeUtils {
         return timestamp;
     }
 
+
+    /**
+     * @param time
+     *
+     * @return
+     */
+    public static String formatTime(int time) {
+        if (time >= 10) {
+            return time + "";
+        }
+        return "0" + time;
+    }
+
     /**
      * 根据long类型的时间戳，转换为一个String类型的描述性时间
      * 通话记录如果发生在今天：“15：30”

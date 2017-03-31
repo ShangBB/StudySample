@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <Button
+        android:id="@+id/btn_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BindService"/>
+
+    <Button
+        android:id="@+id/btn_unbind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="StopService"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="text"
+            android:hint="name"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/edit_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:hint="price"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD BooK In"/>
+
+    <Button
+        android:id="@+id/btn_add_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD BooK Out"/>
+
+    <Button
+        android:id="@+id/btn_add_inout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD BooK Inout"/>
+
+    <TextView
+        android:id="@+id/tv_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

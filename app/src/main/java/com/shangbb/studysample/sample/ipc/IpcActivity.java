@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample;
+package com.shangbb.studysample.sample.ipc;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,15 +10,19 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.sample.customview.CustomViewActivity;
 import com.shangbb.studysample.sample.customview.entity.ActivityBean;
-import com.shangbb.studysample.sample.ipc.IpcActivity;
-import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
+import com.shangbb.studysample.sample.ipc.aidl.AidlActivity;
+import com.shangbb.studysample.sample.ipc.messenger.IPCMessengerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+/**
+ * @Fuction:
+ * @Author: Shang
+ * @Date: 2016/12/15  9:51
+ */
+public class IpcActivity extends BaseActivity{
 
     private ListView mListView;
     private BaseAdapterHelper<ActivityBean> mAdapter;
@@ -33,9 +37,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initToolBar() {
         super.initToolBar();
-        toolbar.setTitle("Study List");
+        toolbar.setTitle("IPC 机制");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
+        initBack();
     }
 
     @Override
@@ -60,10 +65,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setData() {
-        mList.add(new ActivityBean("自定义View", CustomViewActivity.class));
-        mList.add(new ActivityBean("RecyclerView", RecylerViewActivity.class));
-        mList.add(new ActivityBean("IPC 机制", IpcActivity.class));
+
+        mList.add(new ActivityBean("IPC Messenger", IPCMessengerActivity.class));
+        mList.add(new ActivityBean("IPC Aidl", AidlActivity.class));
         mAdapter.notifyDataSetChanged();
     }
-
 }

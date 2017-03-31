@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * 调用相机或从相册选择图片
+ * 注意处理内存泄漏
  * Created by lenovo on 2016/4/30.
  */
 public class SelectPictureUtils {
@@ -23,7 +24,7 @@ public class SelectPictureUtils {
      * @param context Activity上下文对象
      * @param uri  Uri
      */
-    public static void startCamearPicCut(Activity context,Uri uri) {
+    public static void startCameraForResult(Activity context,Uri uri) {
         if (!hasCamera(context)){
             T.showShortToast(context,"找不到可用的相机");
             return;
@@ -43,7 +44,7 @@ public class SelectPictureUtils {
      * 调用系统的图库
      * @param context Activity上下文对象
      */
-    public static void startImageCaptrue(Activity context) {
+    public static void startPhotoForResult(Activity context) {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         context.startActivityForResult(intent, ConfigConsts.SystemPicture.PHOTO_REQUEST_GALLERY);
@@ -57,7 +58,7 @@ public class SelectPictureUtils {
      * @param cutUri 裁剪后保存的图片Uri
      * @param size 剪裁图片的宽高
      */
-    public static void startPhotoZoom(Activity context,Uri uri, Uri cutUri,int size) {
+    public static void startPhotoCutForResult(Activity context,Uri uri, Uri cutUri,int size) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         // crop为true是设置在开启的intent中设置显示的view可以剪裁

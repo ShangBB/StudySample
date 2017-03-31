@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.sample.customview.view.LeafLoadingView;
-import com.shangbb.studysample.util.AnimationUtils;
+import com.shangbb.studysample.sample.customview.util.AnimationUtils;
 
 import java.util.Random;
 

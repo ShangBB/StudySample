@@ -28,7 +28,8 @@ import java.util.List;
  * @Date: 2016/4/18  17:16
  */
 public class BaseActivity extends AppCompatActivity
-        implements  OnClickListener{
+        implements OnClickListener {
+
     protected Context mContext;
     protected Toolbar toolbar;
     private Dialog loadingDialog;
@@ -120,29 +121,32 @@ public class BaseActivity extends AppCompatActivity
     }
 
 
-
-    /*********************************权限适配23up*********************************/
+    /*********************************
+     * 权限适配23up
+     *********************************/
 
     private static PermissionListener mPermissionListener;
 
-    public static void requestRuntimePermission(String[] permissions, PermissionListener listener){
+    public static void requestRuntimePermission(String[] permissions, PermissionListener listener) {
 
         Activity topActivity = ActivityCollector.getTopActivity();
 
-        if (topActivity == null){
+        if (topActivity == null) {
             return;
         }
 
         List<String> permissionList = new ArrayList<>();
 
         for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(topActivity, permission) != PackageManager.PERMISSION_GRANTED){
+            if (ContextCompat.checkSelfPermission(topActivity, permission) != PackageManager
+                    .PERMISSION_GRANTED) {
                 permissionList.add(permission);
             }
         }
 
-        if (!permissionList.isEmpty()){
-            ActivityCompat.requestPermissions(topActivity, permissionList.toArray(new String[permissionList.size()]), 1);
+        if (!permissionList.isEmpty()) {
+            ActivityCompat.requestPermissions(topActivity, permissionList.toArray(new
+                    String[permissionList.size()]), 1);
         } else {
             mPermissionListener.onGranted();
         }
@@ -153,19 +157,19 @@ public class BaseActivity extends AppCompatActivity
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode){
+        switch (requestCode) {
             case 1:
-                if(grantResults.length>0){
+                if (grantResults.length > 0) {
                     List<String> deniedPermissions = new ArrayList<>();
-                    for (int i = 0; i < grantResults.length ; i++) {
+                    for (int i = 0; i < grantResults.length; i++) {
                         int grantResult = grantResults[i];
                         String permission = permissions[i];
-                        if (grantResult != PackageManager.PERMISSION_GRANTED){
+                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
                             deniedPermissions.add(permission);
                         }
                     }
 
-                    if (deniedPermissions.isEmpty()){
+                    if (deniedPermissions.isEmpty()) {
                         mPermissionListener.onGranted();
                     } else {
                         mPermissionListener.onDenied(deniedPermissions);
@@ -201,7 +205,8 @@ public class BaseActivity extends AppCompatActivity
 
     protected Dialog createLoadingDialog(Context context) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.layout_loading_dialog, null); // 得到加载view
+        View v = LayoutInflater.from(context).inflate(R.layout.layout_loading_dialog, null); //
+        // 得到加载view
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view); // 加载布局
         Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
         loadingDialog.setCancelable(true); // 是否可以用"返回键"取消
@@ -211,12 +216,12 @@ public class BaseActivity extends AppCompatActivity
         return loadingDialog;
     }
 
-    protected void showLoadingDialog(){
+    protected void showLoadingDialog() {
         loadingDialog.show();
     }
 
-    protected void dismissLoadingDialog(){
-        if (loadingDialog.isShowing()){
+    protected void dismissLoadingDialog() {
+        if (loadingDialog.isShowing()) {
             loadingDialog.dismiss();
         }
 

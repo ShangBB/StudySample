@@ -32,6 +32,7 @@
 
         <!--RecylerView-->
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>
+
         <activity android:name=".sample.recylerview.Demo1Activity"/>
         <activity android:name=".sample.recylerview.Demo2Activity"/>
         <activity android:name=".sample.recylerview.Demo3Activity1"/>
@@ -41,9 +42,23 @@
         <activity android:name=".sample.recylerview.DiffActivity"/>
 
         <!--IPC-->
+        <activity android:name=".sample.ipc.IpcActivity"/>
+
         <activity android:name=".sample.ipc.messenger.IPCMessengerActivity"/>
         <service android:name=".sample.ipc.messenger.KMessengerService"
-            android:process=":bbs"/>
+            android:process=":bbsMessenger"/>
+
+        <activity android:name=".sample.ipc.aidl.AidlActivity"/>
+        <service
+            android:name=".sample.ipc.aidl.AidlService"
+            android:process=":bbsAidl">
+
+            <intent-filter>
+                <action android:name="com.bbshang.aidl"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </service>
 
     </application>
 

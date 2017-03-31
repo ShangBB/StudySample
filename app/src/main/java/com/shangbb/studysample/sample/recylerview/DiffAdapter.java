@@ -55,7 +55,7 @@ public class DiffAdapter extends RecyclerView.Adapter<DiffAdapter.DiffVH> {
      * @param position
      * @param payloads
      *      如果payloads list 不为空，那么当前绑定了旧数据的ViewHolder 和Adapter， 可以使用 payload的数据进行一次 高效的部分更新。
-     *      如果payload 是空的，Adapter必须进行一次完整绑定（调用两参方法）。
+     *      如果payloads 是空的，Adapter必须进行一次完整绑定（调用两参方法）。
      *      payloads对象不会为null，但是它可能是空（empty），这时候需要完整绑定(所以我们在方法里只要判断isEmpty就好，不用重复判空)。
      */
     @Override
