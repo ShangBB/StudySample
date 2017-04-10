@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.view;
+package com.shangbb.studysample.sample.customview.picview;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,8 +6,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.shangbb.studysample.sample.customview.entity.PieData;
 
 import java.util.ArrayList;
 

@@ -8,7 +8,7 @@
 
     <include layout="@layout/toolbar"/>
 
-    <com.shangbb.studysample.sample.customview.view.CheckView
+    <com.shangbb.studysample.sample.customview.checkview.CheckView
         android:id="@+id/checkview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

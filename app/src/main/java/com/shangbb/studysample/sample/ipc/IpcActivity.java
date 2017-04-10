@@ -10,7 +10,7 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.sample.customview.entity.ActivityBean;
+import com.shangbb.studysample.entity.ActivityBean;
 import com.shangbb.studysample.sample.ipc.aidl.AidlActivity;
 import com.shangbb.studysample.sample.ipc.messenger.IPCMessengerActivity;
 

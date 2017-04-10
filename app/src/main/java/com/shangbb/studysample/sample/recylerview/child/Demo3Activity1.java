@@ -1,7 +1,8 @@
-package com.shangbb.studysample.sample.recylerview;
+package com.shangbb.studysample.sample.recylerview.child;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -9,10 +10,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.shangbb.studysample.R;
 
 /**
- * 多type holder
+ * 默认动画
  */
-
-public class Demo2Activity extends Activity {
+public class Demo3Activity1 extends Activity {
 
     private RecyclerView recyclerview;
 
@@ -26,6 +26,10 @@ public class Demo2Activity extends Activity {
 //                LinearLayoutManager.VERTICAL, false));
         recyclerview.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
 
-        recyclerview.setAdapter(new Demo2Adapter(this));
+        recyclerview.setItemAnimator(new DefaultItemAnimator()); //即使不设置,默认也是这个动画
+        
+        recyclerview.setAdapter(new Demo3Adapter(this));
     }
+
+
 }

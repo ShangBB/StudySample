@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shangbb.studysample.sample.customview.PicViewActivity">
+    tools:context="com.shangbb.studysample.sample.customview.picview.PicViewActivity">
 
     <include layout="@layout/toolbar"/>
 
-    <com.shangbb.studysample.sample.customview.view.PicView
+    <com.shangbb.studysample.sample.customview.picview.PicView
         android:id="@+id/picview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

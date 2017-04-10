@@ -10,7 +10,14 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.sample.customview.entity.ActivityBean;
+import com.shangbb.studysample.entity.ActivityBean;
+import com.shangbb.studysample.sample.recylerview.child.Demo1Activity;
+import com.shangbb.studysample.sample.recylerview.child.Demo2Activity;
+import com.shangbb.studysample.sample.recylerview.child.Demo3Activity1;
+import com.shangbb.studysample.sample.recylerview.child.Demo3Activity2;
+import com.shangbb.studysample.sample.recylerview.child.Demo4Activity;
+import com.shangbb.studysample.sample.recylerview.child.Demo5Activity;
+import com.shangbb.studysample.sample.recylerview.child.DiffActivity;
 
 import java.util.ArrayList;
 import java.util.List;

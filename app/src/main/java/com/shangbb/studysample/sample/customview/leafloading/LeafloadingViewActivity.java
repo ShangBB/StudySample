@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview;
+package com.shangbb.studysample.sample.customview.leafloading;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
-import com.shangbb.studysample.sample.customview.view.LeafLoadingView;
-import com.shangbb.studysample.sample.customview.util.AnimationUtils;
 
 import java.util.Random;
 

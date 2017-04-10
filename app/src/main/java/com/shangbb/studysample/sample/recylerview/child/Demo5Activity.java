@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.recylerview;
+package com.shangbb.studysample.sample.recylerview.child;
 
 import android.app.Activity;
 import android.os.Bundle;

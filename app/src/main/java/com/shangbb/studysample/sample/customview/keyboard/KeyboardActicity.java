@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview;
+package com.shangbb.studysample.sample.customview.keyboard;
 
 
 import android.app.Activity;
@@ -18,7 +18,6 @@ import android.widget.EditText;
 
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
-import com.shangbb.studysample.sample.customview.view.NumKeyboard;
 
 import java.lang.reflect.Method;
 

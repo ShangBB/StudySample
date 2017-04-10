@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.entity;
+package com.shangbb.studysample.sample.customview.picview;
 
 /**
  * @Fuction: 饼状图 数据

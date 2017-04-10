@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.view;
+package com.shangbb.studysample.sample.customview.keyboard;
 
 import android.app.Activity;
 import android.content.Context;
@@ -39,7 +39,7 @@ public class NumKeyboard {
         mKeyboardView = (KeyboardView) mActivity.findViewById(R.id.keyboard_view);
         mKeyboardView.setKeyboard(mKeyboard1);
         mKeyboardView.setEnabled(true);
-        mKeyboardView.setPreviewEnabled(true);
+        mKeyboardView.setPreviewEnabled(true); //设为false不显示预览图
         mKeyboardView.setOnKeyboardActionListener(listener);
     }
 
@@ -49,16 +49,18 @@ public class NumKeyboard {
 
         @Override
         public void onPress(int primaryCode) {
-
+            //按下触发
         }
 
         @Override
         public void onRelease(int primaryCode) {
-
+            //松开触发
         }
 
         @Override
         public void onKey(int primaryCode, int[] keyCodes) {
+            // 松开触发，在OnRelease之前触发
+
             Editable editable = mEditText.getText();
             int start = mEditText.getSelectionStart();
 
@@ -102,7 +104,7 @@ public class NumKeyboard {
 
         @Override
         public void swipeLeft() {
-
+            // 左滑动
         }
 
         @Override

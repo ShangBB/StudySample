@@ -21,7 +21,7 @@ public class SysApplication extends LitePalApplication{
     public void onCreate() {
         super.onCreate();
         instance = this;
-        configCollectCrashInfo();
+        //configCollectCrashInfo();
     }
 
 

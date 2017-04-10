@@ -25,21 +25,20 @@
             android:name=".sample.customview.CustomViewActivity"
             android:label="@string/title_activity_custom_view">
         </activity>
-        <activity android:name=".sample.customview.PicViewActivity"/>
-        <activity android:name=".sample.customview.CheckViewActivity"/>
-        <activity android:name=".sample.customview.LeafloadingViewActivity"/>
-        <activity android:name=".sample.customview.KeyboardActicity"/>
+        <activity android:name=".sample.customview.picview.PicViewActivity"/>
+        <activity android:name=".sample.customview.leafloading.LeafloadingViewActivity"/>
+        <activity android:name=".sample.customview.keyboard.KeyboardActicity"/>
 
         <!--RecylerView-->
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>
 
-        <activity android:name=".sample.recylerview.Demo1Activity"/>
-        <activity android:name=".sample.recylerview.Demo2Activity"/>
-        <activity android:name=".sample.recylerview.Demo3Activity1"/>
-        <activity android:name=".sample.recylerview.Demo3Activity2"/>
-        <activity android:name=".sample.recylerview.Demo4Activity"/>
-        <activity android:name=".sample.recylerview.Demo5Activity"/>
-        <activity android:name=".sample.recylerview.DiffActivity"/>
+        <activity android:name=".sample.recylerview.child.Demo1Activity"/>
+        <activity android:name=".sample.recylerview.child.Demo2Activity"/>
+        <activity android:name=".sample.recylerview.child.Demo3Activity1"/>
+        <activity android:name=".sample.recylerview.child.Demo3Activity2"/>
+        <activity android:name=".sample.recylerview.child.Demo4Activity"/>
+        <activity android:name=".sample.recylerview.child.Demo5Activity"/>
+        <activity android:name=".sample.recylerview.child.DiffActivity"/>
 
         <!--IPC-->
         <activity android:name=".sample.ipc.IpcActivity"/>

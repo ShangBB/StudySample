@@ -1,18 +1,18 @@
-package com.shangbb.studysample.sample.recylerview;
+package com.shangbb.studysample.sample.recylerview.child;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.shangbb.studysample.R;
+import com.shangbb.studysample.sample.recylerview.data.DataUtils;
 
 /**
- * 默认动画
+ * RecyclerView 简单用法
  */
-public class Demo3Activity1 extends Activity {
+public class Demo1Activity extends Activity {
 
     private RecyclerView recyclerview;
 
@@ -24,12 +24,9 @@ public class Demo3Activity1 extends Activity {
 //        recyclerview.setLayoutManager(new GridLayoutManager(this, 3));
 //        recyclerview.setLayoutManager(new LinearLayoutManager(this,
 //                LinearLayoutManager.VERTICAL, false));
-        recyclerview.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+        //瀑布流
+        recyclerview.setLayoutManager(new StaggeredGridLayoutManager(3, OrientationHelper.VERTICAL));
 
-        recyclerview.setItemAnimator(new DefaultItemAnimator()); //即使不设置,默认也是这个动画
-        
-        recyclerview.setAdapter(new Demo3Adapter(this));
+        recyclerview.setAdapter(new Demo1Adapter(this, DataUtils.getDatas()));
     }
-
-
 }

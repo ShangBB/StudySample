@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.recylerview;
+package com.shangbb.studysample.sample.recylerview.child;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

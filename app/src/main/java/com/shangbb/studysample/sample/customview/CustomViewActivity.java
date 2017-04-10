@@ -10,7 +10,10 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
-import com.shangbb.studysample.sample.customview.entity.ActivityBean;
+import com.shangbb.studysample.entity.ActivityBean;
+import com.shangbb.studysample.sample.customview.keyboard.KeyboardActicity;
+import com.shangbb.studysample.sample.customview.leafloading.LeafloadingViewActivity;
+import com.shangbb.studysample.sample.customview.picview.PicViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +62,6 @@ public class CustomViewActivity extends BaseActivity {
 
     private void setData() {
         mList.add(new ActivityBean("PicView", PicViewActivity.class));
-        mList.add(new ActivityBean("CheckView", CheckViewActivity.class));
         mList.add(new ActivityBean("LeafLoadingView", LeafloadingViewActivity.class));
         mList.add(new ActivityBean("KeyboardView", KeyboardActicity.class));
         mAdapter.notifyDataSetChanged();

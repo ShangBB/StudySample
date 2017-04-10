@@ -1,5 +1,5 @@
 
-package com.shangbb.studysample.sample.customview.view;
+package com.shangbb.studysample.sample.customview.leafloading;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -22,6 +22,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 飘叶动画Loading
+ */
 public class LeafLoadingView extends View {
 
     private static final String TAG = "LeafLoadingView";

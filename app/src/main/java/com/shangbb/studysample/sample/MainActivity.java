@@ -15,7 +15,7 @@ import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
 import com.shangbb.studysample.entity.City;
 import com.shangbb.studysample.sample.customview.CustomViewActivity;
-import com.shangbb.studysample.sample.customview.entity.ActivityBean;
+import com.shangbb.studysample.entity.ActivityBean;
 import com.shangbb.studysample.sample.ipc.IpcActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
 import com.shangbb.studysample.util.LogUtils;

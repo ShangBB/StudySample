@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.entity;
+package com.shangbb.studysample.entity;
 
 /**
  * @Fuction:
