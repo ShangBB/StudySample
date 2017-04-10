@@ -6,15 +6,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
+import com.shangbb.studysample.entity.City;
 import com.shangbb.studysample.sample.customview.CustomViewActivity;
 import com.shangbb.studysample.sample.customview.entity.ActivityBean;
 import com.shangbb.studysample.sample.ipc.IpcActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
+import com.shangbb.studysample.util.LogUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +46,7 @@ public class MainActivity extends BaseActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
     }
+
 
     @Override
     protected void initViews() {
@@ -64,6 +74,51 @@ public class MainActivity extends BaseActivity {
         mList.add(new ActivityBean("RecyclerView", RecylerViewActivity.class));
         mList.add(new ActivityBean("IPC 机制", IpcActivity.class));
         mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 将city.json中的数据存入数据库
+     */
+    private void saveDb() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                InputStream is = null;
+                try {
+                    is = getAssets().open("city.json");
+                    if (is != null) {
+                        JsonReader reader = null;
+                        reader = new JsonReader(new InputStreamReader(is));
+                        Type listType = new TypeToken<ArrayList<City>>() {
+                        }.getType();
+                        ArrayList<City> cityArrayList = new Gson().fromJson(reader, listType);
+
+                        for (int i = 0; i < cityArrayList.size(); i++) {
+                            LogUtils.e("-->>" + i);
+                            City city = cityArrayList.get(i);
+                            city.saveThrows();
+                        }
+                        LogUtils.e
+                                ("存储结束===========================================================");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (is != null) {
+                        try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+
+            }
+        }).start();
+
     }
 
 }

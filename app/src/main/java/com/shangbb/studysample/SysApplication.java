@@ -1,15 +1,15 @@
 package com.shangbb.studysample;
 
-import android.app.Application;
-
 import com.shangbb.studysample.util.CrashExceptionHandler;
+
+import org.litepal.LitePalApplication;
 
 /**
  * @Fuction:
  * @Author: Shang
  * @Date: 2016/4/13  13:45
  */
-public class SysApplication extends Application {
+public class SysApplication extends LitePalApplication{
 
     private static SysApplication instance;
 
