@@ -1,6 +1,5 @@
 package com.shangbb.studysample.sample.customview.picview;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import com.shangbb.studysample.R;
@@ -20,7 +19,6 @@ public class PicViewActivity extends BaseActivity {
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("PicView");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }

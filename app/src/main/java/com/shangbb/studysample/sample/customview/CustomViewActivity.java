@@ -1,6 +1,5 @@
 package com.shangbb.studysample.sample.customview;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +13,7 @@ import com.shangbb.studysample.entity.ActivityBean;
 import com.shangbb.studysample.sample.customview.keyboard.KeyboardActicity;
 import com.shangbb.studysample.sample.customview.leafloading.LeafloadingViewActivity;
 import com.shangbb.studysample.sample.customview.picview.PicViewActivity;
+import com.shangbb.studysample.sample.customview.recordview.RecordViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,6 @@ public class CustomViewActivity extends BaseActivity {
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("CustomView");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }
@@ -64,6 +63,7 @@ public class CustomViewActivity extends BaseActivity {
         mList.add(new ActivityBean("PicView", PicViewActivity.class));
         mList.add(new ActivityBean("LeafLoadingView", LeafloadingViewActivity.class));
         mList.add(new ActivityBean("KeyboardView", KeyboardActicity.class));
+        mList.add(new ActivityBean("RecordView", RecordViewActivity.class));
         mAdapter.notifyDataSetChanged();
     }
 

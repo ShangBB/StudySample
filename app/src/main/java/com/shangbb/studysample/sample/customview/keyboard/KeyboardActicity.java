@@ -38,7 +38,6 @@ public class KeyboardActicity extends BaseActivity{
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("KeyboardView");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }

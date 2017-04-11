@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -45,10 +46,10 @@ public class BaseActivity extends AppCompatActivity
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        processIntent();
         initToolBar();
         initViews();
         initListener();
+        processIntent();
     }
 
     /**
@@ -57,8 +58,13 @@ public class BaseActivity extends AppCompatActivity
      */
     protected void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
     }
 
+
+    /**
+     * 显示返回按钮
+     */
     protected void initBack() {
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
@@ -83,28 +89,16 @@ public class BaseActivity extends AppCompatActivity
     protected void initListener() {
     }
 
-
-    /**
-     * @param v
-     *         被点击的view
-     *
-     * @Title onViewClick
-     * @Description 子类在这里面捕获控件的点击事件
-     */
-    protected void onViewClick(View v) {
-    }
-
-    @Override
-    public void onClick(View v) {
-        onViewClick(v);
-
-    }
-
     /**
      * @Title processIntent
      * @Description 获取Intent携带数据
      */
     protected void processIntent() {
+    }
+
+
+    @Override
+    public void onClick(View v) {
     }
 
     @Override

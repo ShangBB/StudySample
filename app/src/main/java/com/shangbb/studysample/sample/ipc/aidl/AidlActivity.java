@@ -67,9 +67,8 @@ public class AidlActivity extends BaseActivity {
     }
 
     @Override
-    protected void onViewClick(View v) {
-        super.onViewClick(v);
-
+    public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()) {
 
             case R.id.btn_bind:
@@ -97,6 +96,7 @@ public class AidlActivity extends BaseActivity {
         }
     }
 
+
     /**
      * 按钮的点击事件，点击之后调用服务端的addBookIn方法
      */
@@ -109,11 +109,11 @@ public class AidlActivity extends BaseActivity {
 
         if (mBookManager == null)
             return;
-        
+
         String name = mNameEt.getText().toString();
         String price = mPriceEt.getText().toString();
-        
-        if (name.isEmpty() || price.isEmpty()){
+
+        if (name.isEmpty() || price.isEmpty()) {
             T.showShortToast("请先输入书名和价格");
             return;
         }
@@ -122,7 +122,7 @@ public class AidlActivity extends BaseActivity {
         book.setName(name);
         book.setPrice(Integer.parseInt(price));
         try {
-            switch (inout){
+            switch (inout) {
                 case 1:
                     mBookManager.addBookIn(book);
                     break;

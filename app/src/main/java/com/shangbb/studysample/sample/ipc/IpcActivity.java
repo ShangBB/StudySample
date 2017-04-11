@@ -38,7 +38,6 @@ public class IpcActivity extends BaseActivity{
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("IPC 机制");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }

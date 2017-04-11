@@ -1,6 +1,5 @@
 package com.shangbb.studysample.sample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,9 +12,9 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.base.BaseAdapterHelper;
 import com.shangbb.studysample.base.ViewHolder;
+import com.shangbb.studysample.entity.ActivityBean;
 import com.shangbb.studysample.entity.City;
 import com.shangbb.studysample.sample.customview.CustomViewActivity;
-import com.shangbb.studysample.entity.ActivityBean;
 import com.shangbb.studysample.sample.ipc.IpcActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
 import com.shangbb.studysample.util.LogUtils;
@@ -37,13 +36,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_listview);
+        //saveDb();
     }
 
     @Override
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("Study List");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
     }
 

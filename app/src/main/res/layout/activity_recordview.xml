@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:record_view="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <com.shangbb.studysample.sample.customview.recordview.RecordView
+        android:id="@+id/record_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        record_view:model="play_model"/>
+
+    <Button
+        android:id="@+id/btn_speak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="按住我憋说话"/>
+
+    <Button
+        android:id="@+id/btn_switch_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:text="切换模式"/>
+
+</LinearLayout>

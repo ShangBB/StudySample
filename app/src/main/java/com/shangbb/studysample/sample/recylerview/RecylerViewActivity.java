@@ -43,7 +43,6 @@ public class RecylerViewActivity extends BaseActivity{
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("RecylerView");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }

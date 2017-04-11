@@ -28,6 +28,7 @@
         <activity android:name=".sample.customview.picview.PicViewActivity"/>
         <activity android:name=".sample.customview.leafloading.LeafloadingViewActivity"/>
         <activity android:name=".sample.customview.keyboard.KeyboardActicity"/>
+        <activity android:name=".sample.customview.recordview.RecordViewActivity"/>
 
         <!--RecylerView-->
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>

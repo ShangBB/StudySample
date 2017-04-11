@@ -14,4 +14,10 @@
 
     <color name="white">#ffffffff</color>
     <color name="lightblack">#ff202020</color>
+
+    <!--RecordView 相关color-->
+    <color name="round_color">#DAF6FE</color>
+    <color name="time_text_color">#FF84AD</color>
+    <color name="round_fill_color">#45C3E5</color>
+    <color name="round_hint_text_color">#666666</color>
 </resources>

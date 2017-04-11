@@ -89,7 +89,6 @@ public class IPCMessengerActivity extends BaseActivity {
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("IPCMessager");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }

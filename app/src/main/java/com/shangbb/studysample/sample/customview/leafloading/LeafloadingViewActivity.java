@@ -77,7 +77,6 @@ public class LeafloadingViewActivity extends BaseActivity implements SeekBar.OnS
     protected void initToolBar() {
         super.initToolBar();
         toolbar.setTitle("LeafLoadingView");
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         initBack();
     }
