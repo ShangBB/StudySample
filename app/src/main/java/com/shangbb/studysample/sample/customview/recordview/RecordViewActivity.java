@@ -34,7 +34,7 @@ public class RecordViewActivity extends BaseActivity implements View.OnTouchList
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            int db = (int) (Math.random() * 100);
+            int db = (int) (Math.random() * 100); //随机模拟音量大小
             mRecordView.setVolume(db);
         }
     };
@@ -57,8 +57,8 @@ public class RecordViewActivity extends BaseActivity implements View.OnTouchList
     protected void initViews() {
         super.initViews();
         mRecordView = (RecordView) findViewById(R.id.record_view);
-        mRecordView.setCountdownTime(9);
         mRecordView.setModel(MODEL_RECORD);
+        mRecordView.setCountDownTime(9);
     }
 
     @Override

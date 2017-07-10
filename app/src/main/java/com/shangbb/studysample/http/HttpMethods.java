@@ -10,13 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * @Fuction: 对retrofit实例化的简单封装, 包含同一个BASE_URL所有网络交互的方法
@@ -67,14 +68,14 @@ public class HttpMethods {
      * @param <T>
      *         Subscriber真正需要的数据类型，也就是Data部分的数据类型
      */
-    private class HttpResultFunc<T> implements Func1<HttpResult<T>, List<T>> {
+    private class HttpResultFunc<T> implements Function<HttpResult<T>, List<T>> {
 
         @Override
-        public List<T> call(HttpResult<T> httpResult) {
-            if ((ResultStatus.HTTP_SUCCESS).equals(httpResult.getStatus())) {
-                return httpResult.getValues();
+        public List<T> apply(@NonNull HttpResult<T> tHttpResult) throws Exception {
+            if ((ResultStatus.HTTP_SUCCESS).equals(tHttpResult.getStatus())) {
+                return tHttpResult.getValues();
             } else {
-                throw new ApiException(httpResult.getDescritpion());
+                throw new ApiException(tHttpResult.getDescritpion());
             }
         }
     }

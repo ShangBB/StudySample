@@ -8,18 +8,18 @@ import com.shangbb.studysample.SysApplication;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 
-import rx.Subscriber;
+import io.reactivex.observers.DisposableObserver;
 
 /**
  * @Fuction: 异常处理
  * @Author: Shang
  * @Date: 2016/5/18  14:46
  */
-public abstract class BaseSubscriber<T> extends Subscriber<T> {
+public abstract class BaseDisposable<T> extends DisposableObserver<T> {
 
     private Context mContext;
 
-    public BaseSubscriber() {
+    public BaseDisposable() {
         mContext = SysApplication.getInstance().getApplicationContext();
     }
 
@@ -30,7 +30,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
     }
 
     @Override
-    public void onCompleted() {
+    public void onComplete() {
 
     }
 

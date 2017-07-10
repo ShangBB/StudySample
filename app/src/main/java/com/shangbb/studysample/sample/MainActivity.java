@@ -18,6 +18,7 @@ import com.shangbb.studysample.sample.customview.CustomViewActivity;
 import com.shangbb.studysample.sample.ipc.IpcActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
 import com.shangbb.studysample.util.LogUtils;
+import com.shangbb.studysample.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -95,12 +96,12 @@ public class MainActivity extends BaseActivity {
                         ArrayList<City> cityArrayList = new Gson().fromJson(reader, listType);
 
                         for (int i = 0; i < cityArrayList.size(); i++) {
-                            LogUtils.e("-->>" + i);
                             City city = cityArrayList.get(i);
+                            city.setCityEn(StringUtils.upperFirstLetter(city.getCityEn()));
                             city.saveThrows();
+                            LogUtils.e("\n-->>" + i + "-->>" +city.getCityEn());
                         }
-                        LogUtils.e
-                                ("存储结束===========================================================");
+                        LogUtils.e("存储结束===========================================================");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -119,5 +120,7 @@ public class MainActivity extends BaseActivity {
         }).start();
 
     }
+
+
 
 }

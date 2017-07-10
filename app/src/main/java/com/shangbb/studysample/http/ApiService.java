@@ -8,13 +8,13 @@ import com.shangbb.studysample.http.entity.BloodData;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * @Fuction: 请求数据服务，这里是所有网络请求的接口方法
