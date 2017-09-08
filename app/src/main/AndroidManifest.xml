@@ -25,10 +25,10 @@
             android:name=".sample.customview.CustomViewActivity"
             android:label="@string/title_activity_custom_view">
         </activity>
-        <activity android:name=".sample.customview.picview.PicViewActivity"/>
         <activity android:name=".sample.customview.leafloading.LeafloadingViewActivity"/>
         <activity android:name=".sample.customview.keyboard.KeyboardActicity"/>
         <activity android:name=".sample.customview.recordview.RecordViewActivity"/>
+        <activity android:name=".sample.customview.baseview.BaseViewActivity"/>
 
         <!--RecylerView-->
         <activity android:name=".sample.recylerview.RecylerViewActivity"/>

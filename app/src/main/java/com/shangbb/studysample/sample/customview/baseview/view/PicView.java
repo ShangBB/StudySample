@@ -1,11 +1,14 @@
-package com.shangbb.studysample.sample.customview.picview;
+package com.shangbb.studysample.sample.customview.baseview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.shangbb.studysample.sample.customview.baseview.bean.PicData;
 
 import java.util.ArrayList;
 
@@ -13,30 +16,39 @@ import java.util.ArrayList;
 /**
  * @Fuction: 简单饼状图
  * @Author: Shang
- * @Date: 2016/11/18  16:49
+ * @Date: 2017/08/16  16:49
  */
 public class PicView extends View {
-
 
 
     //颜色表
     private int[] mColors = {0xFFFF0000, 0xFFFF7F00, 0xFFFFFF00, 0xFF00FF00, 0xFF007FFF,
             0xFF0000FF, 0xFF7F00FF};
 
+    private static final int[] COLORS = {
+            Color.parseColor("#F44336"),
+            Color.parseColor("#FFC107"),
+            Color.parseColor("#9C27B0"),
+            Color.parseColor("#6F8188"),
+            Color.parseColor("#009688"),
+            Color.parseColor("#2196F3"),
+            Color.parseColor("#FF4081")
+    };
+
     private float mStartAngle = 0; //初始绘制角度
-    private ArrayList<PieData> mData;
+    private ArrayList<PicData> mData;
     private int mWidth, mHeight;
     private Paint mPaint = new Paint();
     private RectF rectF;
 
     public PicView(Context context) {
         super(context);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setAntiAlias(true);
     }
 
     public PicView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setAntiAlias(true);
     }
 
     public PicView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -67,7 +79,7 @@ public class PicView extends View {
 
 
         for (int i = 0; i < mData.size(); i++) {
-            PieData pie = mData.get(i);
+            PicData pie = mData.get(i);
             mPaint.setColor(pie.getColor());
             canvas.drawArc(rectF, currentStartAngle, pie.getAngle(), true, mPaint);
             currentStartAngle += pie.getAngle();
@@ -84,7 +96,7 @@ public class PicView extends View {
         invalidate();
     }
 
-    public void setData(ArrayList<PieData> data) {
+    public void setData(ArrayList<PicData> data) {
         mData = data;
         initData();
         invalidate();
@@ -97,7 +109,7 @@ public class PicView extends View {
 
         float sumValue = 0;
         for (int i = 0; i < mData.size(); i++) {
-            PieData pie = mData.get(i);
+            PicData pie = mData.get(i);
 
             sumValue += pie.getValue(); //计算数值和
 
@@ -107,7 +119,7 @@ public class PicView extends View {
 
         float sumAngle = 0;
         for (int i = 0; i < mData.size(); i++) {
-            PieData pie = mData.get(i);
+            PicData pie = mData.get(i);
 
             float percentage = pie.getValue() / sumValue; //百分比
             float angle = percentage * 360; //对应角度

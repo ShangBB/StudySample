@@ -1,11 +1,11 @@
-package com.shangbb.studysample.sample.customview.picview;
+package com.shangbb.studysample.sample.customview.baseview.bean;
 
 /**
  * @Fuction: 饼状图 数据
  * @Author: Shang
  * @Date: 2016/11/18  16:53
  */
-public class PieData {
+public class PicData {
 
     // 用户关心数据
     private String name;
@@ -16,7 +16,7 @@ public class PieData {
     private int color = 0;
     private float angle = 0;
 
-    public PieData(String name, float value) {
+    public PicData(String name, float value) {
         this.name = name;
         this.value = value;
     }
