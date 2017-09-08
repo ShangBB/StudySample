@@ -1,24 +1,24 @@
 package com.shangbb.studysample.sample.recylerview.child;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.shangbb.studysample.R;
-import com.shangbb.studysample.sample.recylerview.widget.RecyclerItemClickListener;
+import com.shangbb.studysample.sample.recylerview.widget.OnRecyclerItemClickListener;
 
 public class Demo5Activity extends Activity {
-    private Activity activity;
+    private Context mContext;
     private RecyclerView recyclerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyler);
-        activity = this;
+        mContext = this;
         recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
 //        recyclerview.setLayoutManager(new LinearLayoutManager(this,
 //                LinearLayoutManager.VERTICAL, false));
@@ -29,10 +29,15 @@ public class Demo5Activity extends Activity {
         final Demo5Adapter adapter = new Demo5Adapter(this);
         recyclerview.setAdapter(adapter);
 
-        recyclerview.addOnItemTouchListener(new RecyclerItemClickListener(activity) {
+        recyclerview.addOnItemTouchListener(new OnRecyclerItemClickListener(mContext) {
             @Override
-            protected void onItemClick(View view, int position) {
-                Toast.makeText(activity, "点击了" + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(RecyclerView.ViewHolder viewHolder, int position) {
+                Toast.makeText(mContext, "click " + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(RecyclerView.ViewHolder viewHolder, int position) {
+                Toast.makeText(mContext, "longClick " + position, Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -1,5 +1,6 @@
 package com.shangbb.studysample.sample.recylerview.child;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.shangbb.studysample.R;
-import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.sample.recylerview.data.TestBean;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG
  * @Author: Shang
  * @Date: 2016/12/16  16:06
  */
-public class DiffActivity extends BaseActivity {
+public class DiffActivity extends Activity {
 
     private List<TestBean> mDatas;
     private RecyclerView mRecyclerView;
@@ -35,12 +35,11 @@ public class DiffActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyler);
+        initViews();
     }
 
-    @Override
-    protected void initViews() {
-        super.initViews();
-        
+    private void initViews() {
+
         initDatas();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -79,14 +78,16 @@ public class DiffActivity extends BaseActivity {
             for (TestBean bean : mDatas) {
                 mNewDatas.add(bean.clone());//clone一遍旧数据 ，模拟刷新操作
             }
-            if (mNewDatas.size() > 3){
-                mNewDatas.add(new TestBean("赵子龙", "帅", mNewDatas.get(3).getPic()));//模拟新增数据
+            if (mNewDatas.size() > 2) {
+                mNewDatas.add(new TestBean("赵子龙", "帅", mNewDatas.get(2).getPic()));//模拟新增数据
+                mNewDatas.get(0).setDesc("小白脸");
+                mNewDatas.get(0).setPic(mNewDatas.get(1).getPic());//模拟修改数据
+                TestBean testBean = mNewDatas.get(1);//模拟数据位移
+                mNewDatas.remove(testBean);
+                mNewDatas.add(testBean);
+            }else {
+                mNewDatas.add(new TestBean("赵子龙", "帅", R.drawable.image3));//模拟新增数据
             }
-            mNewDatas.get(0).setDesc("小白脸");
-            mNewDatas.get(0).setPic(mNewDatas.get(1).getPic());//模拟修改数据
-            TestBean testBean = mNewDatas.get(1);//模拟数据位移
-            mNewDatas.remove(testBean);
-            mNewDatas.add(testBean);
 
             //新宠
             //利用DiffUtil.calculateDiff()方法，传入一个规则DiffUtil.Callback对象，和是否检测移动item的 boolean变量，得到DiffUtil.DiffResult 的对象
@@ -187,7 +188,7 @@ public class DiffActivity extends BaseActivity {
 
             int fromPosition = viewHolder.getAdapterPosition(); // 要拖拽的位置
             int toPosition = target.getAdapterPosition(); //要放置目标的位置
-            Collections.swap(mDatas, fromPosition,toPosition); //做数据的交换
+            Collections.swap(mDatas, fromPosition, toPosition); //做数据的交换
             mAdapter.notifyItemMoved(fromPosition, toPosition);
             return true;
         }
