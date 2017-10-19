@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.baseview;
+package com.shangbb.studysample.sample.customview.baseview.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

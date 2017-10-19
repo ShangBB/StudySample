@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.baseview;
+package com.shangbb.studysample.sample.customview.baseview.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.shangbb.studysample.sample.customview.baseview.view.DrawXXX;
+import com.shangbb.studysample.sample.customview.baseview.view.PaintApi1;
 
-public class DrawXFragment extends Fragment {
+public class PaintApi1Fragment extends Fragment {
 
     @Nullable
     @Override
@@ -18,12 +18,14 @@ public class DrawXFragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         //创建
-        DrawXXX circle = new DrawXXX(layout.getContext());
+        PaintApi1 paintApi1 = new PaintApi1(layout.getContext());
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(0, 0, 0, 0);
-        circle.setLayoutParams(layoutParams);
+        paintApi1.setLayoutParams(layoutParams);
+        //关闭硬件加速
+        paintApi1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         //添加到线性布局
-        layout.addView(circle);
+        layout.addView(paintApi1);
         return layout;
     }
 }

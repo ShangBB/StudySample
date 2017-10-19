@@ -1,4 +1,4 @@
-package com.shangbb.studysample.sample.customview.baseview;
+package com.shangbb.studysample.sample.customview.baseview.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.shangbb.studysample.sample.customview.baseview.view.PaintApi3;
+import com.shangbb.studysample.sample.customview.baseview.view.PaintApi2;
 
-public class PaintApi3Fragment extends Fragment {
+public class PaintApi2Fragment extends Fragment {
 
     @Nullable
     @Override
@@ -18,14 +18,12 @@ public class PaintApi3Fragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         //创建
-        PaintApi3 paintApi3 = new PaintApi3(layout.getContext());
+        PaintApi2 paintApi2 = new PaintApi2(layout.getContext());
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(0, 0, 0, 0);
-        paintApi3.setLayoutParams(layoutParams);
-        //关闭硬件加速
-        //paintApi2.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        paintApi2.setLayoutParams(layoutParams);
         //添加到线性布局
-        layout.addView(paintApi3);
+        layout.addView(paintApi2);
         return layout;
     }
 }

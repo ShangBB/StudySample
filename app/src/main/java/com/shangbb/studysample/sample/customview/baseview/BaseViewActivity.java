@@ -8,6 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.shangbb.studysample.R;
+import com.shangbb.studysample.sample.customview.baseview.fragment.BezierTwoFragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.DrawXFragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.FlipboardFragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.PaintApi1Fragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.PaintApi2Fragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.PaintApi3Fragment;
+import com.shangbb.studysample.sample.customview.baseview.fragment.PicViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,18 +38,13 @@ public class BaseViewActivity extends AppCompatActivity {
 
         //Fragment+ViewPager+FragmentViewPager组合的使用
         viewPager = (ViewPager) findViewById(R.id.bezier_viewpager);
-        fragmentList.add(new DrawXFragment());
-        fragmentList.add(new PaintApi1Fragment());
-        fragmentList.add(new PaintApi2Fragment());
-        fragmentList.add(new PaintApi3Fragment());
-        fragmentList.add(new BezierTwoFragment());
-        fragmentList.add(new PicViewFragment());
-        titleList.add("drawXXX");
-        titleList.add("paintApi1");
-        titleList.add("paintApi2");
-        titleList.add("paintApi3");
-        titleList.add("BezierTwo");
-        titleList.add("PicView");
+        addTab(new DrawXFragment(), "drawXXX");
+        addTab(new PaintApi1Fragment(), "paintApi1");
+        addTab(new PaintApi2Fragment(), "paintApi2");
+        addTab(new PaintApi3Fragment(), "paintApi3");
+        addTab(new BezierTwoFragment(), "BezierTwo");
+        addTab(new PicViewFragment(), "PicView");
+        addTab(new FlipboardFragment(), "翻页");
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentList, titleList);
         viewPager.setAdapter(adapter);
 
@@ -73,5 +75,10 @@ public class BaseViewActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addTab(Fragment fragment, String title){
+        fragmentList.add(fragment);
+        titleList.add(title);
     }
 }
