@@ -338,6 +338,9 @@ public class ImageUtils {
                 case ExifInterface.ORIENTATION_ROTATE_270:
                     degree = 270;
                     break;
+
+                default:
+                    break;
             }
         } catch (IOException e) {
             e.printStackTrace();

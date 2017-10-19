@@ -19,8 +19,9 @@ import android.view.View;
 import com.shangbb.studysample.R;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Fuction: 自定义录音、播放动画，带波浪效果
@@ -49,8 +50,7 @@ public class RecordView extends View {
     private float progress = 0;//总进度360
     private boolean canDrawProgress = false;
     private double r;
-    private Timer timeTimer = new Timer(true);
-    private Timer progressTimer = new Timer(true);
+    private ScheduledExecutorService mExecutorService;
     private long lastTime = 0;
     private int lineSpeed = 100;
     private float translateX = 0;
@@ -88,26 +88,21 @@ public class RecordView extends View {
      */
     private int sensibility = 4;
     private boolean canSetVolume = true;
-
-    private TimerTask timeTask;
-    private TimerTask progressTask;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 countdownTime--;
                 if (countdownTime == 0) {
-                    listener.onCountDown();
                     canSetVolume = false;
-                    timeTask.cancel();
                     postInvalidate();
+                    stop();
                 }
             } else if (msg.what == 2) {
                 progress += 360.00 / (totalTime * 950.00 / 5.00);
                 if (progress > 360) {
                     targetVolume = 1;
                     postInvalidate();
-                    progressTask.cancel();
                 } else {
                     postInvalidate();
                 }
@@ -327,8 +322,9 @@ public class RecordView extends View {
     private void drawImageDot(Canvas canvas) {
         r = getHeight() / 2f - dip2px(mContext, pandding); //半径
         if (r > 0) {
-            if (progress > 360)
+            if (progress > 360) {
                 return;
+            }
             double hu = Math.PI * Double.parseDouble(String.valueOf(progress)) / 180.0; //弧度=角度*
             // (π/180°）
             double p = Math.sin(hu) * r;
@@ -472,37 +468,48 @@ public class RecordView extends View {
         progress = 0;
         countdownTime = totalTime;
         //启动定时器
-        timeTimer.schedule(timeTask = new TimerTask() {
+        mExecutorService = new ScheduledThreadPoolExecutor(2);
+        mExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
             public void run() {
+                if (countdownTime <= 0){
+                    return;
+                }
                 Message msg = new Message();
                 msg.what = 1;
                 mHandler.sendMessage(msg);
             }
-        }, 1000, 1000);
-        progressTimer.schedule(progressTask = new TimerTask() {
+        }, 1000, 1000, TimeUnit.MILLISECONDS);
+
+        mExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
             public void run() {
+                if (countdownTime <= 0){
+                    return;
+                }
                 Message msg = new Message();
                 msg.what = 2;
                 mHandler.sendMessage(msg);
             }
-        }, 0, 5);
+        }, 0, 5, TimeUnit.MILLISECONDS);
     }
 
-    public void cancel() {
+    public void stop() {
         listener.onCountDown();
         canSetVolume = false;
-        timeTask.cancel();
         targetVolume = 1;
         postInvalidate();
-        progressTask.cancel();
+        mExecutorService.shutdownNow();
     }
 
     public void setVolume(int volume) {
-        if (volume > 100)
+        if (volume > 100) {
             volume = volume / 100;
+        }
         volume = volume * 2 / 5;
-        if (!canSetVolume)
+        if (!canSetVolume) {
             return;
+        }
         if (volume > maxVolume * sensibility / 30) {
             isSet = true;
             this.targetVolume = getHeight() * volume / 3 / maxVolume;

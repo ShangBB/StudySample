@@ -42,8 +42,9 @@ public class AppUtils {
      * 卸载Android应用程序
      */
     public static boolean uninstallApk(Context context, String packageName) {
-        if (packageName == null)
+        if (packageName == null) {
             return false;
+        }
 
         Uri packageURI = Uri.parse("package:" + packageName);
         Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);

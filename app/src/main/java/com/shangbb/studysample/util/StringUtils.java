@@ -44,8 +44,9 @@ public final class StringUtils {
      * @return {@code true}: null或全空白字符<br> {@code false}: 不为null且不全空白字符
      */
     public static boolean isSpace(String s) {
-        if (s == null)
+        if (s == null) {
             return true;
+        }
         for (int i = 0, len = s.length(); i < len; ++i) {
             if (!Character.isWhitespace(s.charAt(i))) {
                 return false;
@@ -64,16 +65,18 @@ public final class StringUtils {
      * @return {@code true}: 相等<br>{@code false}: 不相等
      */
     public static boolean equals(CharSequence a, CharSequence b) {
-        if (a == b)
+        if (a == b) {
             return true;
+        }
         int length;
         if (a != null && b != null && (length = a.length()) == b.length()) {
             if (a instanceof String && b instanceof String) {
                 return a.equals(b);
             } else {
                 for (int i = 0; i < length; i++) {
-                    if (a.charAt(i) != b.charAt(i))
+                    if (a.charAt(i) != b.charAt(i)) {
                         return false;
+                    }
                 }
                 return true;
             }
@@ -125,8 +128,9 @@ public final class StringUtils {
      * @return 首字母大写字符串
      */
     public static String upperFirstLetter(String s) {
-        if (isEmpty(s) || !Character.isLowerCase(s.charAt(0)))
+        if (isEmpty(s) || !Character.isLowerCase(s.charAt(0))) {
             return s;
+        }
         return String.valueOf((char) (s.charAt(0) - 32)) + s.substring(1);
     }
 
@@ -143,8 +147,9 @@ public final class StringUtils {
      * @return 首字母小写字符串
      */
     public static String lowerFirstLetter(String s) {
-        if (isEmpty(s) || !Character.isUpperCase(s.charAt(0)))
+        if (isEmpty(s) || !Character.isUpperCase(s.charAt(0))) {
             return s;
+        }
         return String.valueOf((char) (s.charAt(0) + 32)) + s.substring(1);
     }
 
@@ -157,8 +162,9 @@ public final class StringUtils {
      */
     public static String reverse(String s) {
         int len = length(s);
-        if (len <= 1)
+        if (len <= 1) {
             return s;
+        }
         int mid = len >> 1;
         char[] chars = s.toCharArray();
         char c;
@@ -178,8 +184,9 @@ public final class StringUtils {
      * @return 半角字符串
      */
     public static String toDBC(String s) {
-        if (isEmpty(s))
+        if (isEmpty(s)) {
             return s;
+        }
         char[] chars = s.toCharArray();
         for (int i = 0, len = chars.length; i < len; i++) {
             if (chars[i] == 12288) {
@@ -201,8 +208,9 @@ public final class StringUtils {
      * @return 全角字符串
      */
     public static String toSBC(String s) {
-        if (isEmpty(s))
+        if (isEmpty(s)) {
             return s;
+        }
         char[] chars = s.toCharArray();
         for (int i = 0, len = chars.length; i < len; i++) {
             if (chars[i] == ' ') {

@@ -107,8 +107,9 @@ public class AidlActivity extends BaseActivity {
             return;
         }
 
-        if (mBookManager == null)
+        if (mBookManager == null) {
             return;
+        }
 
         String name = mNameEt.getText().toString();
         String price = mPriceEt.getText().toString();

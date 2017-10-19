@@ -25,13 +25,17 @@ public class T {
     }
 
     public static void showShortToast(Context context,CharSequence text) {
-        if(isShow)Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
+        if(isShow) {
+            Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+        }
     }
 
 
 
     public static void showLongToast(Context context,CharSequence text) {
-        if(isShow)Toast.makeText(context,text,Toast.LENGTH_LONG).show();
+        if(isShow) {
+            Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+        }
     }
 
 

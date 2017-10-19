@@ -124,10 +124,12 @@ public class UserInfo implements Parcelable {
     }
 
     public static final Creator<UserInfo> CREATOR = new Creator<UserInfo>() {
+        @Override
         public UserInfo createFromParcel(Parcel in) {
             return new UserInfo(in);
         }
 
+        @Override
         public UserInfo[] newArray(int size) {
             return new UserInfo[size];
         }

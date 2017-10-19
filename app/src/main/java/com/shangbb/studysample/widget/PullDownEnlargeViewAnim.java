@@ -94,6 +94,9 @@ public class PullDownEnlargeViewAnim {
                         childView.scrollTo((int) ((distance / 2) * MAGNIFICATION_X), 0);
                         nowDistance = distance;
                         return true;
+
+                    default:
+                        break;
                 }
                 return false;
             }

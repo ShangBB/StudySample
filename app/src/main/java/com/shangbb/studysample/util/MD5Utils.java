@@ -10,19 +10,19 @@ public class MD5Utils {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
     
-    public static String MD5Encode(byte[] toencode) {
+    public static String md5Encode(byte[] toencode) {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.reset();
             md5.update(toencode);
-            return HexEncode(md5.digest());
+            return hexEncode(md5.digest());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return "";
     }
  
-    public static String HexEncode(byte[] toencode) {
+    public static String hexEncode(byte[] toencode) {
         StringBuilder sb = new StringBuilder(toencode.length * 2);
         for (byte b : toencode) {
             sb.append(Integer.toHexString((b & 0xf0) >>> 4));
@@ -48,11 +48,13 @@ public class MD5Utils {
             for (byte aB : b) {
                 i = aB;
 
-                if (i < 0)
+                if (i < 0) {
                     i += 256;
+                }
 
-                if (i < 16)
+                if (i < 16) {
                     buf.append("0");
+                }
 
                 buf.append(Integer.toHexString(i));
 

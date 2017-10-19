@@ -147,6 +147,9 @@ public class DiffActivity extends Activity {
                     mDatas = mNewDatas;
                     mAdapter.setDatas(mDatas);
                     break;
+
+                default:
+                    break;
             }
         }
     };

@@ -10,8 +10,10 @@ import com.shangbb.studysample.R;
 import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.util.T;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Random;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import static com.shangbb.studysample.sample.customview.recordview.RecordView.MODEL_PLAY;
 import static com.shangbb.studysample.sample.customview.recordview.RecordView.MODEL_RECORD;
@@ -26,15 +28,13 @@ public class RecordViewActivity extends BaseActivity implements View.OnTouchList
 
     private RecordView mRecordView;
     private int nowModel = MODEL_RECORD;
-
-    private TimerTask timeTask;
-    private Timer timeTimer = new Timer(true);
+    private ScheduledExecutorService mExecutorService;
 
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            int db = (int) (Math.random() * 100); //随机模拟音量大小
+            int db = new Random().nextInt(100); //随机模拟音量大小
             mRecordView.setVolume(db);
         }
     };
@@ -87,23 +87,32 @@ public class RecordViewActivity extends BaseActivity implements View.OnTouchList
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             mRecordView.start();
-            timeTimer.schedule(timeTask = new TimerTask() {
+            mExecutorService = new ScheduledThreadPoolExecutor(1);
+            mExecutorService.scheduleAtFixedRate(new Runnable() {
+                @Override
                 public void run() {
                     Message msg = new Message();
                     msg.what = 1;
                     handler.sendMessage(msg);
                 }
-            }, 20, 20);
+            }, 20, 20, TimeUnit.MILLISECONDS);
 
             mRecordView.setOnCountDownListener(new RecordView.OnCountDownListener() {
                 @Override
                 public void onCountDown() {
                     T.showShortToast("计时结束啦~~");
+                    if (!mExecutorService.isShutdown()){
+                        mExecutorService.shutdownNow();
+                    }
                 }
             });
 
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            mRecordView.cancel();
+
+            if (!mExecutorService.isShutdown()){
+                mRecordView.stop();
+            }
+
         }
         return false;
     }

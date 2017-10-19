@@ -1,7 +1,6 @@
 package com.shangbb.studysample.sample.customview.leafloading;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +21,7 @@ public class LeafloadingViewActivity extends BaseActivity implements SeekBar.OnS
                                                                      View.OnClickListener {
 
     Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case REFRESH_PROGRESS:

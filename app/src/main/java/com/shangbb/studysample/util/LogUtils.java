@@ -130,7 +130,7 @@ public class LogUtils {
      */
     public static String getDefaultTag(StackTraceElement stackTraceElement) {
         String fileName = stackTraceElement.getFileName();
-        String stringArray[] = fileName.split("\\.");
+        String[] stringArray = fileName.split("\\.");
         String tag = stringArray[0];
         return tag;
     }

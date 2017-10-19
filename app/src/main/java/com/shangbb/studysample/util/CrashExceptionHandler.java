@@ -31,7 +31,7 @@ import java.util.Locale;
  */
 public class CrashExceptionHandler implements Thread.UncaughtExceptionHandler {
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA);
+    private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm", Locale.CHINA);
     /**
      * 默认存放闪退信息的文件夹名称
      */

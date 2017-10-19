@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import com.shangbb.studysample.R;
+import com.shangbb.studysample.base.BaseActivity;
 import com.shangbb.studysample.sample.customview.baseview.fragment.BezierTwoFragment;
 import com.shangbb.studysample.sample.customview.baseview.fragment.DrawXFragment;
 import com.shangbb.studysample.sample.customview.baseview.fragment.FlipboardFragment;
@@ -25,7 +25,7 @@ import java.util.List;
  * @Date: 2017/7/18 16:18
  */
 
-public class BaseViewActivity extends AppCompatActivity {
+public class BaseViewActivity extends BaseActivity {
 
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titleList = new ArrayList<>();
@@ -75,6 +75,14 @@ public class BaseViewActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void initToolBar() {
+        super.initToolBar();
+        toolbar.setTitle("BaseView");
+        setSupportActionBar(toolbar);
+        initBack();
     }
 
     private void addTab(Fragment fragment, String title){

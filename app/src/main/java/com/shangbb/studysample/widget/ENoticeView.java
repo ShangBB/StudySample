@@ -12,10 +12,7 @@ import android.widget.ViewFlipper;
  * @Fuction: 上下滚动的快报控件
  * @Author: BBShang
  * @Date: 2017/4/10 15:58
- *
- * @Usage:
- * ENoticeView noticeView = (ENoticeView) findViewById(R.id.noticeView);
- * noticeView.setAdapter(new NoticeAdapter() {...});
+ * @Usage: ENoticeView noticeView = (ENoticeView) findViewById(R.id.noticeView); noticeView.setAdapter(new NoticeAdapter() {...});
  * noticeView.setOnItemClickListener(new ENoticeView.OnItemClickListener() {...});
  */
 
@@ -54,10 +51,11 @@ public class ENoticeView extends ViewFlipper {
         }
         removeAllViews();
         //只有数据源大于2条的时候才会开启自动切换
-        if (this.mAdapter.getCount() > 1)
+        if (this.mAdapter.getCount() > 1) {
             setAutoStart(true);
-        else
+        } else {
             setAutoStart(false);
+        }
         for (int i = 0; i < this.mAdapter.getCount(); i++) {
             View view = this.mAdapter.getView(getContext(), i);
             addView(view);
