@@ -17,6 +17,7 @@ import com.shangbb.studysample.entity.City;
 import com.shangbb.studysample.sample.customview.CustomViewActivity;
 import com.shangbb.studysample.sample.ipc.IpcActivity;
 import com.shangbb.studysample.sample.recylerview.RecylerViewActivity;
+import com.shangbb.studysample.sample.x5.X5WebviewActivity;
 import com.shangbb.studysample.util.LogUtils;
 import com.shangbb.studysample.util.StringUtils;
 
@@ -73,6 +74,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ActivityBean("自定义View", CustomViewActivity.class));
         mList.add(new ActivityBean("RecyclerView", RecylerViewActivity.class));
         mList.add(new ActivityBean("IPC 机制", IpcActivity.class));
+        mList.add(new ActivityBean("X5", X5WebviewActivity.class));
         mAdapter.notifyDataSetChanged();
     }
 

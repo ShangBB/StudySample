@@ -1,7 +1,6 @@
 package com.shangbb.studysample.base;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,10 +11,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 
 import com.shangbb.studysample.R;
 
@@ -33,14 +30,12 @@ public class BaseActivity extends AppCompatActivity
 
     protected Context mContext;
     protected Toolbar toolbar;
-    private Dialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mContext = this;
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
-        loadingDialog = createLoadingDialog(this);
     }
 
     @Override
@@ -195,30 +190,6 @@ public class BaseActivity extends AppCompatActivity
         }
         startActivity(intent);
         overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
-    }
-
-    protected Dialog createLoadingDialog(Context context) {
-
-        View v = LayoutInflater.from(context).inflate(R.layout.layout_loading_dialog, null); //
-        // 得到加载view
-        LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view); // 加载布局
-        Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
-        loadingDialog.setCancelable(true); // 是否可以用"返回键"取消
-        loadingDialog.setContentView(layout, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
-        return loadingDialog;
-    }
-
-    protected void showLoadingDialog() {
-        loadingDialog.show();
-    }
-
-    protected void dismissLoadingDialog() {
-        if (loadingDialog.isShowing()) {
-            loadingDialog.dismiss();
-        }
-
     }
 }
 

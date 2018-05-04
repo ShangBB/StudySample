@@ -8,8 +8,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.shangbb.studysample.consts.ConfigConsts;
-
 import java.util.List;
 
 /**
@@ -18,6 +16,19 @@ import java.util.List;
  * Created by lenovo on 2016/4/30.
  */
 public class SelectPictureUtils {
+
+    /***
+     *标记用户点击了从照相机获取图片  即拍照
+     */
+    public static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
+    /***
+     *标记用户点击了从图库中获取图片  即从相册中取
+     */
+    public static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
+    /***
+     * 返回处理后的图片
+     */
+    public static final int PHOTO_REQUEST_CUT = 3;// 结果
 
     /****
      * 调用系统的拍照功能
@@ -38,7 +49,7 @@ public class SelectPictureUtils {
         intent.putExtra("showActionIcons", false);
         // 指定调用相机拍照后照片的储存路径
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        context.startActivityForResult(intent, ConfigConsts.SystemPicture.PHOTO_REQUEST_TAKEPHOTO);
+        context.startActivityForResult(intent, PHOTO_REQUEST_TAKEPHOTO);
     }
     /***
      * 调用系统的图库
@@ -47,7 +58,7 @@ public class SelectPictureUtils {
     public static void startPhotoForResult(Activity context) {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-        context.startActivityForResult(intent, ConfigConsts.SystemPicture.PHOTO_REQUEST_GALLERY);
+        context.startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
     }
 
 
@@ -78,7 +89,7 @@ public class SelectPictureUtils {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cutUri);
         intent.putExtra("return-data", false);//设置为不返回数据
 
-        context.startActivityForResult(intent, ConfigConsts.SystemPicture.PHOTO_REQUEST_CUT);
+        context.startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
 
     /**

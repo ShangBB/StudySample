@@ -3,8 +3,9 @@ package com.shangbb.studysample;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
-import com.shangbb.studysample.util.CrashExceptionHandler;
+import com.tencent.smtt.sdk.QbSdk;
 
 import org.litepal.LitePalApplication;
 
@@ -27,22 +28,27 @@ public class SysApplication extends LitePalApplication{
     public void onCreate() {
         super.onCreate();
         instance = this;
-        //configCollectCrashInfo();
+
+        initX5();
     }
 
+    private void initX5() {
+        //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
-    /**app在sd卡的主目录*/
-    public final static String APP_MAIN_FOLDER_NAME = "ASample";
-    /**本地存放闪退日志的目录*/
-    public final static String CRASH_FOLDER_NAME = "crash";
-    /**
-     * 配置奔溃信息的搜集
-     */
-    private void configCollectCrashInfo() {
-        CrashExceptionHandler crashExceptionHandler = new CrashExceptionHandler(this, APP_MAIN_FOLDER_NAME, CRASH_FOLDER_NAME);
-        Thread.setDefaultUncaughtExceptionHandler(crashExceptionHandler);
+            @Override
+            public void onViewInitFinished(boolean arg0) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.d("app", " onViewInitFinished is " + arg0);
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+            }
+        };
+        //x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(),  cb);
     }
-
 
     /**======================================多进程初始化方案 START==============================================*/
     private void init() {

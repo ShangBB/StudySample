@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/navigation1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="#ECF0F2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="请输入网址..."
+            android:singleLine="true"
+            android:textSize="18sp">
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#ECF0F2"
+            android:linksClickable="false"
+            android:text="GO"/>
+
+    </LinearLayout>
+
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/x5_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.tencent.smtt.sdk.WebView>
+
+</LinearLayout>

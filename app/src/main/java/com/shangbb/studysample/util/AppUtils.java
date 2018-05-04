@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.text.TextUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -130,18 +129,6 @@ public class AppUtils {
      */
     public static void callDial(Context context, String phoneNumber) {
         context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber)));
-    }
-
-    /**
-     * 发送短信
-     */
-    public static void sendSms(Context context, String phoneNumber,
-                               String content) {
-        Uri uri = Uri.parse("smsto:"
-                + (TextUtils.isEmpty(phoneNumber) ? "" : phoneNumber));
-        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-        intent.putExtra("sms_body", TextUtils.isEmpty(content) ? "" : content);
-        context.startActivity(intent);
     }
 
 }
