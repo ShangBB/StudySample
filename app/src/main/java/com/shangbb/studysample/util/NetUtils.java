@@ -9,6 +9,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Map;
+
 /**
  * @Fuction: 跟网络相关的工具类
  * @Author: Shang
@@ -180,5 +190,66 @@ public class NetUtils {
         intent.setComponent(cm);
         intent.setAction("android.intent.action.VIEW");
         activity.startActivityForResult(intent, 0);
+    }
+
+    /**
+     * 基础的 HttpURLConnection post 上传
+     * @param url
+     * @param form
+     *
+     * @return
+     */
+    public static String post(String url, Map<String, String> form){
+        HttpURLConnection conn = null;
+        PrintWriter pw = null ;
+        BufferedReader rd = null ;
+        StringBuilder out = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
+        String line;
+        String response = null;
+        try {
+            for (String key : form.keySet()) {
+                if(out.length()!=0){
+                    out.append("&");
+                }
+                //URLEncoder.encode(form.get(key), "UTF-8") 记得编码
+                out.append(key).append("=").append(URLEncoder.encode(form.get(key), "UTF-8"));
+            }
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setReadTimeout(30000);
+            conn.setConnectTimeout(30000);
+            conn.setUseCaches(false);
+            conn.connect();
+            pw = new PrintWriter(conn.getOutputStream());
+            pw.print(out.toString());
+            pw.flush();
+            rd  = new BufferedReader( new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            while ((line = rd.readLine()) != null ) {
+                sb.append(line);
+            }
+            response = sb.toString();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(pw != null){
+                    pw.close();
+                }
+                if(rd != null){
+                    rd.close();
+                }
+                if(conn != null){
+                    conn.disconnect();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
     }
 }

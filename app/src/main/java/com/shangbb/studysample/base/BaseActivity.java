@@ -19,12 +19,6 @@ import com.shangbb.studysample.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * @Fuction: Activity 基类
- * @Author: Shang
- * @Date: 2016/4/18  17:16
- */
 public class BaseActivity extends AppCompatActivity
         implements OnClickListener {
 
